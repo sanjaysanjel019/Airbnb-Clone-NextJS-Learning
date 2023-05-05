@@ -9,7 +9,10 @@ interface IRegisterModalStore {
 
 const useRegisterModal = create<IRegisterModalStore>((set)=>({
     isOpen:false,
-    onOpen:()=> set({isOpen:true}),
+    onOpen:()=> {
+        console.log("Setting isOPen")
+        set({isOpen:true})
+    },
     onClose:()=> set({isOpen:false}),
 }));
 
