@@ -13,7 +13,7 @@ interface ModalProps {
   actionLabel: string;
   disabled?: boolean;
   secondaryAction?: () => void;
-  secondaryActionLabel: string;
+  secondaryActionLabel?: string;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -41,7 +41,7 @@ const Modal: React.FC<ModalProps> = ({
     setShowModal(false);
     setTimeout(() => {
       onClose();
-    }, 300);
+    }, 300); 
   }, [disabled, onClose]);
 
   const handleSubmit = useCallback(() => {
@@ -112,31 +112,32 @@ const Modal: React.FC<ModalProps> = ({
                 <div className="text-lg font-semibold">{title}</div>
               </div>
 
-            {/* BODY */}
-            <div className="relative p-6 flex-auto">
+              {/* BODY */}
+              <div className="relative p-6 flex-auto">
                 {body}
-            </div>
-            {/* Foooter */}
-            <div className="flex flex-col gap-2 p-6">
+              </div>
+              {/* Foooter */}
+              <div className="flex flex-col gap-2 p-6">
                 <div className="flex flex-row items-center gap-4 w-full">
 
-                
-                {secondaryAction && secondaryActionLabel && (
-                     <Button 
-                     outline
-                         disabled={disabled}
-                         label={secondaryActionLabel}
-                         onClick={handleSecondaryAction}/>
-                )}
-               
+
+                  {secondaryAction && secondaryActionLabel && (
+                    <Button
+                      outline
+                      disabled={disabled}
+                      label={secondaryActionLabel}
+                      onClick={handleSecondaryAction} />
+                  )}
 
 
-                    <Button 
+
+                  <Button
                     disabled={disabled}
                     label={actionLabel}
-                    onClick={handleSubmit}/>
+                    onClick={handleSubmit} />
                 </div>
-            </div>
+                {footer}
+              </div>
             </div>
           </div>
         </div>
